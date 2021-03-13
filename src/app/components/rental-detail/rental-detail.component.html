@@ -1,0 +1,22 @@
+
+
+<h3>Araba Kiralama Detayları</h3>
+<hr/>
+<table *ngIf="dataLoaded==true" class="table table-primary table-striped">
+    <thead>
+    <tr>
+      <th>Id</th>
+      <th>Marka</th>
+      <th>Ad Soyad</th>
+      <th>Kiralama Tarihi</th>
+      <th>Teslim Tarihi</th>
+    </tr>
+  </thead>
+  <tr *ngFor="let rentalDetailDto of rentalDetailDtos">
+    <td>{{rentalDetailDto.rentalId}}</td>
+    <td>{{rentalDetailDto.brandName}}</td>
+    <td>{{rentalDetailDto.firstName}} {{rentalDetailDto.lastName}}</td>
+    <td>{{rentalDetailDto.rentDate}}</td>
+    <td>{{rentalDetailDto.returnDate}}</td>    
+  </tr>
+</table>
