@@ -2,18 +2,11 @@
   <span class="visually-hidden">Loading...</span>
 </div>
 
-<h3>Marka Listesi</h3>
-<hr/>
-<table *ngIf="dataLoaded==true" class="table table-warning table-striped">
-  <thead>
-    <tr>
-      <th>Id</th>
-      <th>Marka</th>
-    </tr>
-  </thead>
-  
-  <tr *ngFor="let brand of brands">
-    <td>{{brand.id}}</td>
-    <td>{{brand.brandName}}</td>
-  </tr>
-</table>
+<ul *ngIf="dataLoaded==true" class="list-group">
+    <li (click)="setCurrentBrand(brand)" routerLink="/cars/brand/{{brand.id}}" *ngFor="let brand of brands" [class]="getCurrentBrandClass(brand)">{{brand.brandName}}</li>
+</ul>
+
+
+
+
+<h1 *ngIf="currentBrand">{{currentBrand.brandName}} seçtiniz.</h1>

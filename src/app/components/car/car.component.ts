@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Car } from 'src/app/models/car';
 import { CarService } from 'src/app/services/car.service';
 
@@ -18,16 +19,46 @@ export class CarComponent implements OnInit {
   //   message:"",
   //   success:true
   // };
-  constructor(private carService:CarService) { }
+  constructor(private carService:CarService, private activatedRoute:ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.getCars();
+    this.activatedRoute.params.subscribe(params=>{
+      if(params["brandId"]){
+        this.getCarsByBrand(params["brandId"]);
+      }else if(params["colorId"]){
+        this.getCarsByColor(params["colorId"]);
+      }else{
+        this.getCars();
+      }
+    })
   }
 
   getCars(){
     console.log("Api request başladı")
     //Gelen datayı CarResponseModel' e map edeceksin.
     this.carService.getCars().subscribe(response=>{
+      this.cars=response.data
+      console.log("Api request bitti");
+      this.dataLoaded=true;
+    })
+    console.log("Method bitti.");
+  }
+
+  getCarsByBrand(brandId:number){
+    console.log("Api request başladı")
+    //Gelen datayı CarResponseModel' e map edeceksin.
+    this.carService.getCarsByBrand(brandId).subscribe(response=>{
+      this.cars=response.data
+      console.log("Api request bitti");
+      this.dataLoaded=true;
+    })
+    console.log("Method bitti.");
+  }
+
+  getCarsByColor(colorId:number){
+    console.log("Api request başladı")
+    //Gelen datayı CarResponseModel' e map edeceksin.
+    this.carService.getCarsByColor(colorId).subscribe(response=>{
       this.cars=response.data
       console.log("Api request bitti");
       this.dataLoaded=true;

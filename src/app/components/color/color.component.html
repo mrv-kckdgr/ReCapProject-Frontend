@@ -3,18 +3,10 @@
 </div>
 
 
-<h3>Renk Listesi</h3>
-<hr/>
-<table *ngIf="dataLoaded==true" class="table table-success table-striped">
-  <thead>
-    <tr>
-      <th>Id</th>
-      <th>Renk</th>
-    </tr>
-  </thead>
+<h3>Renkler</h3>
+<ul *ngIf="dataLoaded==true" class="list-group">
   
-  <tr *ngFor="let color of colors">
-    <td>{{color.id}}</td>
-    <td>{{color.colorName}}</td>
-  </tr>
-</table>
+  <li (click)="setCurrentColor(color)" routerLink="/cars/color/{{color.id}}" *ngFor="let color of colors" class="getCurrentColorClass(color)">
+    {{color.colorName}}    
+  </li>
+</ul>
