@@ -2,11 +2,24 @@
   <span class="visually-hidden">Loading...</span>
 </div>
 
-<ul *ngIf="dataLoaded==true" class="list-group">
-    <li (click)="setCurrentBrand(brand)" routerLink="/cars/brand/{{brand.id}}" *ngFor="let brand of brands" [class]="getCurrentBrandClass(brand)">{{brand.brandName}}</li>
-</ul>
-
-
-
 
 <h1 *ngIf="currentBrand">{{currentBrand.brandName}} seçtiniz.</h1>
+
+
+<div class="accordion" id="accordionExample">
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingOne">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+        Markalar
+      </button>
+    </h2>
+    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <ul *ngIf="dataLoaded==true" class="list-group">
+          <li routerLink="/cars" [class]="getAllBrandClass()">Tüm Markalar</li>
+          <li (click)="setCurrentBrand(brand)" routerLink="/cars/brand/{{brand.id}}" *ngFor="let brand of brands" [class]="getCurrentBrandClass(brand)">{{brand.brandName}}</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

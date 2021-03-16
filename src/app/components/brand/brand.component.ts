@@ -1,3 +1,4 @@
+import { isNull } from '@angular/compiler/src/output/output_ast';
 import { Component, OnInit } from '@angular/core';
 import { Brand } from 'src/app/models/brand';
 import { BrandService } from 'src/app/services/brand.service';
@@ -38,4 +39,12 @@ export class BrandComponent implements OnInit {
       return "list-group-item";
     }
   }
+
+  getAllBrandClass(){
+    if(!this.currentBrand){
+      return "list-group-item active";
+    }else{
+      return "list-group-item";
+    }
+  }  
 }

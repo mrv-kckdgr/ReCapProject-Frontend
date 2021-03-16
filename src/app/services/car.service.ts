@@ -31,8 +31,4 @@ export class CarService {
     return this.httpClient.get<ListResponseModel<Car>>(newPath);      
   }
 
-  //getCarDetails():Observable<ListResponseModel<Car>>{
-  //  return this.httpClient.get<ListResponseModel<Car>>(this.apiUrl2);
-  //}
-
 }

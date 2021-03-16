@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Car } from 'src/app/models/car';
 import { CarService } from 'src/app/services/car.service';
+declare let alertify:any;
 
 @Component({
   selector: 'app-car',
@@ -52,7 +53,7 @@ export class CarComponent implements OnInit {
       console.log("Api request bitti");
       this.dataLoaded=true;
     })
-    console.log("Method bitti.");
+    console.log("Method bitti.");    
   }
 
   getCarsByColor(colorId:number){
