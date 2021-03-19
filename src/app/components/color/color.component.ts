@@ -45,9 +45,4 @@ export class ColorComponent implements OnInit {
       return "list-group-item";
     }
   }
-
-  resetCurrentColor(color:Color_){
-    color.colorName="";    
-  }
-
 }

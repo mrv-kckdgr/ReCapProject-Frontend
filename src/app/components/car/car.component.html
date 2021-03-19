@@ -2,6 +2,15 @@
   <span class="visually-hidden">Loading...</span>
 </div>
 
+<div class="mb-3">
+  <label for="filterText" class="form-label">Araba Ara</label>
+  <input type="text" [(ngModel)]="filterText" class="form-control" id="filterText" placeholder="arama ifadesi giriniz">
+</div>
+
+<div *ngIf="filterText.length>3" class="alert alert-warning">
+{{filterText}} aradınız.
+</div>
+
 <h3>Araba Listesi</h3>
 <hr/>
 <table *ngIf="dataLoaded==true" class="table table-danger table-striped">
@@ -13,15 +22,18 @@
         <th>Model Yılı</th>
         <th>Günlük Ücret</th>    
         <th>Açıklama</th>
+        <th></th>
     </tr>
 </thead>
-
-<tr *ngFor="let car of cars">
+<tbody>
+<tr *ngFor="let car of cars" | filterPipe:filterText>
     <td>{{car.id}}</td>
     <td>{{car.brandId}}</td>
     <td>{{car.colorId}}</td>    
     <td>{{car.modelYear}}</td>
     <td>{{car.dailyPrice | currency:'₺'}}</td>
     <td>{{car.description}}</td>
+    <td><button (click)="addToCart(car)" class="btn btn-success">Sepete Ekle</button></td>
 <tr>
+</tbody>
 </table>
