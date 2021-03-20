@@ -26,7 +26,7 @@
       <div class="accordion-body">
         <ul class="list-group" *ngIf="dataLoaded==true">
           <li routerLink="/cars" [class]="getAllBrandClass()" *ngIf="!filterText">Tüm Markalar</li>
-          <li (click)="setCurrentBrand(brand)" routerLink="/cars/brand/{{brand.id}}" [class]="getCurrentBrandClass(brand)" *ngFor="let brand of brands" filterPipeBrand:filterText>{{brand.brandName}}</li>
+          <li (click)="setCurrentBrand(brand)" routerLink="/cars/brand/{{brand.id}}" [class]="getCurrentBrandClass(brand)" *ngFor="let brand of brands | filterPipeBrand:filterText">{{brand.brandName}}</li>
         </ul>
       </div>
     </div>

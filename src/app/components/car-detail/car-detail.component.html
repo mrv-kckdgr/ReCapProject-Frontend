@@ -11,10 +11,9 @@
 {{filterText}} aradınız.
 </div>
 
-<app-brand></app-brand>
 <app-brand-filter></app-brand-filter>
 
-<app-color></app-color>
+<app-color-filter></app-color-filter>
 
 <h3>Araba Detayları</h3>
 <hr/>
@@ -31,7 +30,7 @@
     <th>KDV'li Fiyat</th>
     <th>Açıklama</th>
 </tr>
-<tr *ngFor="let carDetailDto of carDetailDtos" | filterPipeCar:filterText>
+<tr *ngFor="let carDetailDto of carDetailDtos | filterPipeCar:filterText">
     <td>{{carDetailDto.carId}}</td>
     <td>{{carDetailDto.brandName | uppercase}}</td>
     <td>{{carDetailDto.colorName}}</td>

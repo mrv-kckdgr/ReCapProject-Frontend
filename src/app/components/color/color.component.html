@@ -23,7 +23,7 @@
       <div class="accordion-body">
         <ul class="list-group" *ngIf="dataLoaded==true" filterPipeColor:filterText>  
           <li routerLink="/cars" [class]="getAllColorClass()">Tüm Renkler</li>
-          <li (click)="setCurrentColor(color)" routerLink="/cars/color/{{color.id}}" *ngFor="let color of colors" [class]="getCurrentColorClass(color)">
+          <li (click)="setCurrentColor(color)" routerLink="/cars/color/{{color.id}}" *ngFor="let color of colors | filterPipeColor:filterText" [class]="getCurrentColorClass(color)">
             {{color.colorName}}    
           </li>
         </ul>
