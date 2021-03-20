@@ -17,9 +17,14 @@ import { RentalDetailComponent } from './components/rental-detail/rental-detail.
 import { CustomerDetailComponent } from './components/customer-detail/customer-detail.component';
 import { VatAddedPipe } from './pipes/vat-added.pipe';
 import { FilterPipePipe } from './pipes/filter-pipe.pipe';
+import { FilterPipeColorPipe } from './pipes/filter-pipe-color.pipe';
+import { FilterPipeBrandPipe } from './pipes/filter-pipe-brand.pipe'
 
 import {ToastrModule} from "ngx-toastr";
-import { CartSummaryComponent } from './components/cart-summary/cart-summary.component'
+import { CartSummaryComponent } from './components/cart-summary/cart-summary.component';
+import { FilterPipeCarPipe } from './pipes/filter-pipe-car.pipe';
+import { BrandFilterComponent } from './components/brand-filter/brand-filter.component';
+import { ColorFilterComponent } from './components/color-filter/color-filter.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +40,12 @@ import { CartSummaryComponent } from './components/cart-summary/cart-summary.com
     CustomerDetailComponent,
     VatAddedPipe,
     FilterPipePipe,
-    CartSummaryComponent
+    CartSummaryComponent,
+    FilterPipeColorPipe,
+    FilterPipeBrandPipe,
+    FilterPipeCarPipe,
+    BrandFilterComponent,
+    ColorFilterComponent
   ],
   imports: [
     BrowserModule,

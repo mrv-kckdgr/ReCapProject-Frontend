@@ -2,6 +2,16 @@
   <span class="visually-hidden">Loading...</span>
 </div>
 
+<div class="mb-3">
+  <label for="filterText" class="form-label">Renk Ara</label>
+  <input type="text" [(ngModel)]="filterText" class="form-control" id="filterText" placeholder="arama ifadesi giriniz">
+</div>
+
+<div *ngIf="filterText.length>2" class="alert alert-warning">
+{{filterText}} aradınız.
+</div>
+
+
 <div class="accordion" id="accordionExample">
   <div class="accordion-item">
     <h2 class="accordion-header" id="headingTwo">
@@ -11,7 +21,7 @@
     </h2>
     <div id="collapseTwo" class="accordion-collapse collapse show" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
       <div class="accordion-body">
-        <ul *ngIf="dataLoaded==true" class="list-group">  
+        <ul class="list-group" *ngIf="dataLoaded==true" filterPipeColor:filterText>  
           <li routerLink="/cars" [class]="getAllColorClass()">Tüm Renkler</li>
           <li (click)="setCurrentColor(color)" routerLink="/cars/color/{{color.id}}" *ngFor="let color of colors" [class]="getCurrentColorClass(color)">
             {{color.colorName}}    

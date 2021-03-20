@@ -5,6 +5,15 @@
 
 <h1 *ngIf="currentBrand">{{currentBrand.brandName}} seçtiniz.</h1>
 
+<div class="mb-3">
+  <label for="filterText" class="form-label">Marka Ara</label>
+  <input type="text" [(ngModel)]="filterText" class="form-control" id="filterText" placeholder="arama ifadesi giriniz">
+</div>
+
+<div *ngIf="filterText.length>2" class="alert alert-danger">
+{{filterText}} aradınız.
+</div>
+
 
 <div class="accordion" id="accordionExample">
   <div class="accordion-item">
@@ -15,11 +24,23 @@
     </h2>
     <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
       <div class="accordion-body">
-        <ul *ngIf="dataLoaded==true" class="list-group">
-          <li routerLink="/cars" [class]="getAllBrandClass()">Tüm Markalar</li>
-          <li (click)="setCurrentBrand(brand)" routerLink="/cars/brand/{{brand.id}}" *ngFor="let brand of brands" [class]="getCurrentBrandClass(brand)">{{brand.brandName}}</li>
+        <ul class="list-group" *ngIf="dataLoaded==true">
+          <li routerLink="/cars" [class]="getAllBrandClass()" *ngIf="!filterText">Tüm Markalar</li>
+          <li (click)="setCurrentBrand(brand)" routerLink="/cars/brand/{{brand.id}}" [class]="getCurrentBrandClass(brand)" *ngFor="let brand of brands" filterPipeBrand:filterText>{{brand.brandName}}</li>
         </ul>
       </div>
     </div>
   </div>
+</div>
+
+
+<div class="mb-3 row">
+<div class="col-auto">
+<select class="form-select form-select-col-md-8">
+  <option *ngFor="let brand of brands" [value]="brand.id" >{{brand.brandName}}</option>
+</select>
+</div>
+<div class="col-auto">
+<button class="btn btn-success">Filtrele</button>
+</div>
 </div>

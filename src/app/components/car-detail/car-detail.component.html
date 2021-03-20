@@ -2,6 +2,19 @@
   <span class="visually-hidden">Loading...</span>
 </div>
 
+<div class="mb-3">
+  <label for="filterText" class="form-label">Araba Ara</label>
+  <input type="text" [(ngModel)]="filterText" class="form-control" id="filterText" placeholder="arama ifadesi giriniz">
+</div>
+
+<div *ngIf="filterText.length>2" class="alert alert-warning">
+{{filterText}} aradınız.
+</div>
+
+<app-brand></app-brand>
+<app-brand-filter></app-brand-filter>
+
+<app-color></app-color>
 
 <h3>Araba Detayları</h3>
 <hr/>
@@ -18,13 +31,13 @@
     <th>KDV'li Fiyat</th>
     <th>Açıklama</th>
 </tr>
-<tr *ngFor="let carDetailDto of carDetailDtos">
+<tr *ngFor="let carDetailDto of carDetailDtos" | filterPipeCar:filterText>
     <td>{{carDetailDto.carId}}</td>
     <td>{{carDetailDto.brandName | uppercase}}</td>
     <td>{{carDetailDto.colorName}}</td>
-    <td>{{carDetailDto.modelYear | date:'YY/MM/DD'}}</td>
-    <td>{{carDetailDto.dailyPrice | currency:'TL':'₺'}}</td>
-    <td>{{carDetailDto.dailyPrice | vatAdded:10 | currency:'TL':'₺'}}</td>
+    <td>{{carDetailDto.modelYear}}</td>
+    <td>{{carDetailDto.dailyPrice | currency:'₺'}}</td>
+    <td>{{carDetailDto.dailyPrice | vatAdded:10 | currency:'₺'}}</td>
     <td>{{carDetailDto.description}}</td>
 </tr>
 </table>
