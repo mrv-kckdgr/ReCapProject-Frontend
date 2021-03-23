@@ -2,10 +2,10 @@
 <div class="col-auto">
 <select class="form-select form-select-col-md-8">
     <option>Marka Seçiniz</option>
-  <option *ngFor="let brand of brands" [value]="brand.id" >{{brand.brandName}}</option>
+  <option *ngFor="let brand of brands" ></option>
 </select>
 </div>
 <div class="col-auto">
-<button class="btn btn-success" (click)="getCarsByBrand(brandId)">Filtrele</button>
+<button class="btn btn-success">Filtrele</button>
 </div>
 </div>

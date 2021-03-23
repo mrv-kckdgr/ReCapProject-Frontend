@@ -1,10 +1,10 @@
 <div class="mb-3 row">
 <div class="col-auto">
 <select class="form-select form-select-col-md-8" aria-label="Default select example">
-  <option *ngIf="let color of colors"  [value]="color.id">{{color.colorName}}</option>
+  <option *ngIf="let color of colors"></option>
 </select>
 </div>
 <div class="col-auto">
-<button class="btn btn-danger" (click)="getCarsByColor(colorId)">Filtrele</button>
+<button class="btn btn-danger">Filtrele</button>
 </div>
 </div>
