@@ -7,10 +7,11 @@ import { FooterComponent } from "./footer/footer.component";
 import { NavbarComponent } from "./navbar/navbar.component";
 import { SidebarComponent } from "./sidebar/sidebar.component";
 import { CustomerAddComponent } from './customer-add/customer-add.component';
+import { UserAddComponent } from './user-add/user-add.component';
 
 @NgModule({
   imports: [CommonModule, RouterModule, NgbModule],
-  declarations: [FooterComponent, NavbarComponent, SidebarComponent, CustomerAddComponent],
+  declarations: [FooterComponent, NavbarComponent, SidebarComponent, CustomerAddComponent, UserAddComponent],
   exports: [FooterComponent, NavbarComponent, SidebarComponent]
 })
 export class ComponentsModule {}

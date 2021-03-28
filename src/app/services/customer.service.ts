@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Customer } from '../models/customer';
+import { ResponseModel } from '../models/responseModel';
 
 @Injectable({
   providedIn: 'root'
@@ -8,10 +10,11 @@ import { Customer } from '../models/customer';
 export class CustomerService {
 
   apiUrl="https://localhost:44358/api/"
+
   constructor(private httpClient:HttpClient) { }
 
-  add(customer:Customer){
-    return this.httpClient.post(this.apiUrl + "customers/add", customer)
+  add(customer:Customer):Observable<ResponseModel>{
+    return this.httpClient.post<ResponseModel>(this.apiUrl + "customers/add", customer)
   }
 }
 

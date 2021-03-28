@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormGroup, FormBuilder, FormControl, Validators, Form} from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { CustomerService } from 'src/app/services/customer.service';
+
 @Component({
   selector: 'app-customer-add',
   templateUrl: './customer-add.component.html',
@@ -17,9 +18,9 @@ export class CustomerAddComponent implements OnInit {
   }
 
   createCustomerAddForm(){
-    this.customerAddForm = this.formBuilder.group({
-      userId:["", Validators.required],
-      companyName:["", Validators.required]
+    this.customerAddForm = this.formBuilder.group({ 
+      userId: ["", Validators.required],         
+      companyName: ["", Validators.required],
 
     })
   }
@@ -27,10 +28,21 @@ export class CustomerAddComponent implements OnInit {
   add(){
     if(this.customerAddForm.valid){
       let customerModel = Object.assign({}, this.customerAddForm.value);
-    console.log(customerModel);
-    this.customerService.add(customerModel).subscribe(response=>{
+      console.log(customerModel);
+      this.customerService.add(customerModel).subscribe(response=>{
       console.log(response);
-      this.toastrService.success("Müşteri eklendi", "Başarılı");
+      this.toastrService.success(response.message, "Başarılı");
+    }, responseError=>{
+      if(responseError.error.ValidationErrors.length>0){
+        console.log(responseError.error.ValidationErrors);
+        for (let i = 0; i < responseError.error.ValidationErrors.length; i++) {
+          this.toastrService.error(responseError.error.ValidationErrors[i].ErrorMessage, "Doğrulama Hatası");
+          
+        }
+        
+      
+      }
+      
     });
     
     }else{

@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -25,6 +25,8 @@ import { CartSummaryComponent } from './components/cart-summary/cart-summary.com
 import { FilterPipeCarPipe } from './pipes/filter-pipe-car.pipe';
 import { BrandFilterComponent } from './components/brand-filter/brand-filter.component';
 import { ColorFilterComponent } from './components/color-filter/color-filter.component';
+import { CustomerAddComponent } from './components/customer-add/customer-add.component';
+import { UserAddComponent } from './components/user-add/user-add.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +40,7 @@ import { ColorFilterComponent } from './components/color-filter/color-filter.com
     CarDetailComponent,
     RentalDetailComponent,
     CustomerDetailComponent,
+    CustomerAddComponent,
     VatAddedPipe,
     FilterPipePipe,
     CartSummaryComponent,
@@ -45,7 +48,8 @@ import { ColorFilterComponent } from './components/color-filter/color-filter.com
     FilterPipeBrandPipe,
     FilterPipeCarPipe,
     BrandFilterComponent,
-    ColorFilterComponent
+    ColorFilterComponent,
+    UserAddComponent
   ],
   imports: [
     BrowserModule,
