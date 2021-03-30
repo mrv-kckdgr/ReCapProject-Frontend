@@ -11,6 +11,8 @@ const routes: Routes = [
   {path:"carDetails", pathMatch:"full", component:CarDetailComponent},
   {path:"cars/brand/:brandId", pathMatch:"full", component:CarComponent},
   {path:"cars/color/:colorId", pathMatch:"full", component:CarComponent},
+  {path:"cardetails/brand/:brandId", pathMatch:"full", component:CarDetailComponent},
+  {path:"cardetails/color/:colorId", pathMatch:"full", component:CarDetailComponent},
   {path:"customers/add", component:CustomerAddComponent},
   {path:"users/add", component:UserAddComponent}
 

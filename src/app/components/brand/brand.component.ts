@@ -47,5 +47,9 @@ export class BrandComponent implements OnInit {
     }else{
       return "list-group-item";
     }
-  }  
+  } 
+  
+  getAllByBrandId(){
+
+  }
 }

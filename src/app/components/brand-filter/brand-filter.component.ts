@@ -24,4 +24,8 @@ export class BrandFilterComponent implements OnInit {
     });
   }
 
+  getAllByBrandId(){
+
+  }
+
 }

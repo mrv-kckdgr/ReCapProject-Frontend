@@ -17,12 +17,12 @@
 
 <div class="accordion" id="accordionExample">
   <div class="accordion-item">
-    <h2 class="accordion-header" id="headingOne">
+    <h2 class="accordion-header" id="headingTwo">
       <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
         Markalar
       </button>
     </h2>
-    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+    <div id="collapseOne" class="accordion-collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
       <div class="accordion-body">
         <ul class="list-group" *ngIf="dataLoaded==true">
           <li routerLink="/cars" [class]="getAllBrandClass()" *ngIf="!filterText">Tüm Markalar</li>
@@ -31,16 +31,15 @@
       </div>
     </div>
   </div>
-</div>
+</div> 
 
 
-<div class="mb-3 row">
+<!--<div class="mb-3 row">
 <div class="col-auto">
 <select class="form-select form-select-col-md-8">
-  <option *ngFor="let brand of brands" [value]="brand.id" >{{brand.brandName}}</option>
+  <option *ngFor="let brand of brands | filterPipeBrand:filterText" [value]="brand.id" >{{brand.brandName}}</option>
 </select>
-</div>
-<div class="col-auto">
-<button class="btn btn-success">Filtrele</button>
-</div>
-</div>
+</div> -->
+<!--<div class="col-auto">
+<button class="btn btn-success col-6" (click)="getAllByBrandId()">Filtrele</button>
+</div>-->

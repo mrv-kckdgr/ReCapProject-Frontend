@@ -11,10 +11,18 @@
 {{filterText}} aradınız.
 </div>
 
-<app-brand-filter></app-brand-filter>
+<!--<app-brand-filter></app-brand-filter>
 
-<app-color-filter></app-color-filter>
+<app-color-filter></app-color-filter> -->
 
+<div class="row">
+<div class="col-md-6">
+<app-brand></app-brand>
+</div>
+<div class="col-md-6">
+<app-color></app-color>
+</div>
+</div>
 <h3>Araba Detayları</h3>
 <hr/>
 <table *ngIf="dataLoaded==true" class="table table-success table-striped">
@@ -39,4 +47,15 @@
     <td>{{carDetailDto.dailyPrice | vatAdded:10 | currency:'₺'}}</td>
     <td>{{carDetailDto.description}}</td>
 </tr>
-</table>
+</table> 
+
+
+
+<div *ngFor="let carDetailDto of carDetailDtos | filterPipeCar:filterText" class="card" style="width: 18rem;">
+  <img src="{{carDetailDto.imagePath}}" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">{{carDetailDto.description}}</h5>
+    <p class="card-text">{{carDetailDto.dailyPrice}}</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>
+</div>
