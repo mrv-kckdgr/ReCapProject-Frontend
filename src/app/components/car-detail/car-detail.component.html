@@ -52,7 +52,7 @@
 
 
 <div *ngFor="let carDetailDto of carDetailDtos | filterPipeCar:filterText" class="card" style="width: 18rem;">
-  <img src="{{carDetailDto.imagePath}}" class="card-img-top" alt="...">
+  <img src="https://localhost:44358/{{carDetailDto.imagePath}}" class="card-img-top" alt="...">
   <div class="card-body">
     <h5 class="card-title">{{carDetailDto.description}}</h5>
     <p class="card-text">{{carDetailDto.dailyPrice}}</p>
