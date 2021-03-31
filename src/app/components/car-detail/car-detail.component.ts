@@ -16,6 +16,7 @@ export class CarDetailComponent implements OnInit {
   dataLoaded=false;
   filterText="";
   brands:Brand[]=[];
+  imageUrl:string="https://localhost:44358/images/";
 
   constructor(private carDetailService:CarDetailService) { }
 
