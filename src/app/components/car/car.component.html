@@ -23,6 +23,7 @@
         <th>Günlük Ücret</th>    
         <th>Açıklama</th>
         <th></th>
+        <th></th>
     </tr>
 </thead>
 <tbody>
@@ -34,6 +35,7 @@
     <td>{{car.dailyPrice | currency:'₺'}}</td>
     <td>{{car.description}}</td>
     <td><button (click)="addToCart(car)" class="btn btn-success">Sepete Ekle</button></td>
+    <td><a routerLink="/cardetail/"><button class="btn btn-danger">Detaya Git>>></button></a></td>
 <tr>
 </tbody>
 </table>

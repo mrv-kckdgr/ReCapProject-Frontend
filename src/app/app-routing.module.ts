@@ -6,13 +6,13 @@ import { CustomerAddComponent } from './components/customer-add/customer-add.com
 import { UserAddComponent } from './components/user-add/user-add.component';
 
 const routes: Routes = [
-  {path:"", pathMatch:"full", component:CarDetailComponent},
+  {path:"", pathMatch:"full", component:CarComponent},
   {path:"cars", pathMatch:"full", component:CarComponent},
-  {path:"carDetails", pathMatch:"full", component:CarDetailComponent},
+  {path:"cardetail", pathMatch:"full", component:CarDetailComponent},
   {path:"cars/brand/:brandId", pathMatch:"full", component:CarComponent},
   {path:"cars/color/:colorId", pathMatch:"full", component:CarComponent},
-  {path:"cardetails/brand/:brandId", pathMatch:"full", component:CarDetailComponent},
-  {path:"cardetails/color/:colorId", pathMatch:"full", component:CarDetailComponent},
+  {path:"cardetail/brand/:brandId", pathMatch:"full", component:CarDetailComponent},
+  {path:"cardetail/color/:colorId", pathMatch:"full", component:CarDetailComponent},
   {path:"customers/add", component:CustomerAddComponent},
   {path:"users/add", component:UserAddComponent}
 
