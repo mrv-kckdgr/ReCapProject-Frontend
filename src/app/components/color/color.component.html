@@ -19,7 +19,7 @@
         Renkler
       </button>
     </h2>
-    <div id="collapseTwo" class="accordion-collapse collapse show" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
       <div class="accordion-body">
         <ul class="list-group" *ngIf="dataLoaded==true" filterPipeColor:filterText>  
           <li routerLink="/cars" [class]="getAllColorClass()">Tüm Renkler</li>

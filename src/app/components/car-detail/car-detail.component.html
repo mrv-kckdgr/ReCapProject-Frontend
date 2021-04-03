@@ -1,87 +1,96 @@
-<div *ngIf="dataLoaded==false" class="spinner-border text-danger" role="status">
-  <span class="visually-hidden">Loading...</span>
-</div>
-
-<div class="mb-3">
-  <label for="filterText" class="form-label">Araba Ara</label>
-  <input type="text" [(ngModel)]="filterText" class="form-control" id="filterText" placeholder="arama ifadesi giriniz">
-</div>
-
-<div *ngIf="filterText.length>2" class="alert alert-warning">
-{{filterText}} aradınız.
-</div>
-
-<!--<app-brand-filter></app-brand-filter>
-
-<app-color-filter></app-color-filter> -->
-
-<div class="row">
-<div class="col-md-6">
-<app-brand></app-brand>
-</div>
-<div class="col-md-6">
-<app-color></app-color>
-</div>
-</div>
-<h3>Araba Detayları</h3>
-<hr/>
-<table *ngIf="dataLoaded==true" class="table table-success table-striped">
-<thead>
-
-</thead>
-<tr>
-    <th>Id</th>
-    <th>Marka</th>
-    <th>Renk</th>
-    <th>Model Yılı </th>
-    <th>Günlük Fiyat</th>
-    <th>KDV'li Fiyat</th>
-    <th>Açıklama</th>
-</tr>
-<tr *ngFor="let carDetailDto of carDetailDtos | filterPipeCar:filterText">
-    <td>{{carDetailDto.carId}}</td>
-    <td>{{carDetailDto.brandName | uppercase}}</td>
-    <td>{{carDetailDto.colorName}}</td>
-    <td>{{carDetailDto.modelYear}}</td>
-    <td>{{carDetailDto.dailyPrice | currency:'₺'}}</td>
-    <td>{{carDetailDto.dailyPrice | vatAdded:10 | currency:'₺'}}</td>
-    <td>{{carDetailDto.description}}</td>
-</tr>
-</table> 
-
-
 <div class="container">
-<div class="row">
-<div *ngFor="let carDetailDto of carDetailDtos | filterPipeCar:filterText" class="card" style="width: 18rem;">
-<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-  <div class="carousel-indicators">
-    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-  </div>
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-      <img [src]="imageUrl+carDetailDto.imagePath" class="card-img-top" alt="...">
+  <div class="row">
+    <div class="col-md-3">
+      <a routerLink="/cars/add"
+                ><button class="btn btn-info">Yeni Araba Ekle</button></a
+              >
     </div>
-    <div class="carousel-item">
-      <img [src]="imageUrl+carDetailDto.imagePath" class="card-img-top" alt="...">
-    </div>    
-  </div>
-  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
-  </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
-  </button>
-</div>
-  <div class="card-body">
-    <h5 class="card-title">{{carDetailDto.description}}</h5>
-    <p class="card-text">{{carDetailDto.dailyPrice}}</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
-  </div>
-</div>
+    <div class="col-md-9">
 
-</div>
-</div>
+
+    <div *ngIf="dataLoaded==false" class="spinner-border text-danger" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+
+    <div class="mb-3">
+      <label for="filterText" class="form-label">Araba Ara</label>
+      <input type="text" [(ngModel)]="filterText" class="form-control" id="filterText" placeholder="arama ifadesi giriniz">
+    </div>
+
+    <div *ngIf="filterText.length>2" class="alert alert-warning">
+    {{filterText}} aradınız.
+    </div>
+
+    <div class="row">
+    <div class="col-md-6">
+    <app-brand></app-brand>
+    </div>
+    <div class="col-md-6">
+    <app-color></app-color>
+    </div>
+    </div>
+    <h3>Araba Detayları</h3>
+    <hr/>
+    <table *ngIf="dataLoaded==true" class="table table-success table-striped">
+    <thead>
+
+    </thead>
+    <tr>
+        <th>Id</th>
+        <th>Marka</th>
+        <th>Renk</th>
+        <th>Model Yılı </th>
+        <th>Günlük Fiyat</th>
+        <th>KDV'li Fiyat</th>
+        <th>Açıklama</th>
+    </tr>
+    <tr *ngFor="let carDetailDto of carDetailDtos | filterPipeCar:filterText">
+        <td>{{carDetailDto.carId}}</td>
+        <td>{{carDetailDto.brandName | uppercase}}</td>
+        <td>{{carDetailDto.colorName}}</td>
+        <td>{{carDetailDto.modelYear}}</td>
+        <td>{{carDetailDto.dailyPrice | currency:'₺'}}</td>
+        <td>{{carDetailDto.dailyPrice | vatAdded:10 | currency:'₺'}}</td>
+        <td>{{carDetailDto.description}}</td>
+    </tr>
+    </table> 
+
+
+    <div class="container">
+    <div class="row">
+    <div *ngFor="let carDetailDto of carDetailDtos | filterPipeCar:filterText" class="card" style="width: 18rem;">
+    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+      </div>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img [src]="imageUrl+carDetailDto.imagePath" class="card-img-top" alt="...">
+        </div>
+        <div class="carousel-item">
+          <img [src]="imageUrl+carDetailDto.imagePath" class="card-img-top" alt="...">
+        </div>    
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+      <div class="card-body">
+        <h5 class="card-title">{{carDetailDto.description}}</h5>
+        <p class="card-text">{{carDetailDto.dailyPrice}}</p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+      </div>
+    </div>
+
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>

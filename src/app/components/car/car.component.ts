@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Car } from 'src/app/models/car';
+import { CarDetailDto } from 'src/app/models/dtos/carDetailDto';
+import { BrandService } from 'src/app/services/brand.service';
 import { CarService } from 'src/app/services/car.service';
 import { CartService } from 'src/app/services/cart.service';
 declare let alertify:any;
@@ -15,6 +17,7 @@ export class CarComponent implements OnInit {
 
   
   cars: Car[] = [];
+  carDetailDtos:CarDetailDto[]=[];
   dataLoaded = false;
   filterText="";
   
@@ -32,8 +35,15 @@ export class CarComponent implements OnInit {
       }else if(params["colorId"]){
         this.getCarsByColor(params["colorId"]);
       }else{
-        this.getCars();
+        this.getCarDetails();
       }
+    })
+  }
+
+  getCarDetails(){
+    this.carService.getCarDetails().subscribe(response =>{
+      this.carDetailDtos=response.data;
+      this.dataLoaded=true;
     })
   }
 
@@ -52,7 +62,7 @@ export class CarComponent implements OnInit {
     console.log("Api request başladı")
     //Gelen datayı CarResponseModel' e map edeceksin.
     this.carService.getCarsByBrand(brandId).subscribe(response=>{
-      this.cars=response.data
+      this.carDetailDtos=response.data
       console.log("Api request bitti");
       this.dataLoaded=true;
     })
@@ -63,15 +73,15 @@ export class CarComponent implements OnInit {
     console.log("Api request başladı")
     //Gelen datayı CarResponseModel' e map edeceksin.
     this.carService.getCarsByColor(colorId).subscribe(response=>{
-      this.cars=response.data
+      this.carDetailDtos=response.data
       console.log("Api request bitti");
       this.dataLoaded=true;
     })
     console.log("Method bitti.");
   }
 
-  addToCart(car:Car){
-    if(car.id===1){
+  addToCart(car:CarDetailDto){
+    if(car.carId===1){
       this.toastrService.error("Hata", "Bu ürün sepete eklenemez!!");
     }else{
       console.log(car);
