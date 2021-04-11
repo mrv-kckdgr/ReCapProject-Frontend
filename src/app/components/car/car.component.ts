@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { Brand } from 'src/app/models/brand';
 import { Car } from 'src/app/models/car';
 import { CarDetailDto } from 'src/app/models/dtos/carDetailDto';
 import { BrandService } from 'src/app/services/brand.service';
@@ -20,15 +21,18 @@ export class CarComponent implements OnInit {
   carDetailDtos:CarDetailDto[]=[];
   dataLoaded = false;
   filterText="";
+  brandId:number;
+  brands:Brand[]=[];
   
   // carResponseModel:CarResponseModel={
   //   data:this.cars,
   //   message:"",
   //   success:true
   // };
-  constructor(private carService:CarService, private activatedRoute:ActivatedRoute, private toastrService:ToastrService, private cartService:CartService) { }
+  constructor(private carService:CarService, private activatedRoute:ActivatedRoute, private toastrService:ToastrService, private cartService:CartService, private brandService:BrandService) { }
 
   ngOnInit(): void {
+    this.getBrands();
     this.activatedRoute.params.subscribe(params=>{
       if(params["brandId"]){
         this.getCarsByBrand(params["brandId"]);
@@ -56,6 +60,12 @@ export class CarComponent implements OnInit {
       this.dataLoaded=true;
     })
     console.log("Method bitti.");
+  }
+
+  getBrands(){
+    this.brandService.getBrands().subscribe(response=>{
+      this.brands=response.data;
+    })
   }
 
   getCarsByBrand(brandId:number){

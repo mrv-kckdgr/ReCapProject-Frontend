@@ -11,6 +11,7 @@ import { BrandService } from 'src/app/services/brand.service';
 export class BrandComponent implements OnInit {
 
   brands:Brand[]=[];
+  brandId:number;
   currentBrand:Brand;
   dataLoaded=false;
   filterText="";
@@ -30,6 +31,7 @@ export class BrandComponent implements OnInit {
 
   setCurrentBrand(brand:Brand){
     alert(brand.brandName);
+    alert(this.brandId)
     this.currentBrand=brand;
   }
 

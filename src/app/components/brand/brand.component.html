@@ -52,7 +52,7 @@
           >
             Tüm Markalar
           </li>
-          <li
+          <li            
             (click)="setCurrentBrand(brand)"
             routerLink="/cardetail/brand/{{ brand.id }}"
             [class]="getCurrentBrandClass(brand)"
@@ -65,3 +65,9 @@
     </div>
   </div>
 </div>
+
+
+<select class="form-select" [(ngModel)]="brandId">
+  <option selected>Markalar</option>
+  <option *ngFor="let brand of brands" [value]="brand.id">{{brand.brandName}}</option>
+</select>
